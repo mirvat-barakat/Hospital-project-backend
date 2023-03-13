@@ -2,7 +2,7 @@
 include('connection.php');
 
 $sql = "SELECT * FROM departments";
-$result = $mysqli>query($sql);
+$result = $mysqli->query($sql);
 $departments = array();
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {

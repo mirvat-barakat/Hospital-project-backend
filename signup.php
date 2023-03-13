@@ -13,7 +13,7 @@ $usertype_id = $_POST["usertype_id"];
 
 $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-$query = $mysql -> prepare ("SELECT * FROM users WHERE email = ? AND password = ?");
+$query = $mysqli -> prepare ("SELECT * FROM users WHERE email = ? AND password = ?");
 $query -> bind_param("ss", $email, $hashed_password );
 $query -> execute();
 $result = $query -> get_result();
@@ -25,7 +25,7 @@ while($object = $result -> fetch_assoc()){
 if(isset($data)){
     $response['status'] = "failed";
 }else{
-    $query = $mysql -> prepare ("INSERT INTO users (name, email, password, dob, gender, usertype_id) VALUES (?, ?, ?, ?, ?, ?)");
+    $query = $mysqli -> prepare ("INSERT INTO users (name, email, password, dob, gender, usertype_id) VALUES (?, ?, ?, ?, ?, ?)");
     $query -> bind_param("sssssi", $name, $email, $hashed_password, $dob, $gender, $usertype_id);
     $query -> execute();
         $response["status"] = "success";
