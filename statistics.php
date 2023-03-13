@@ -21,6 +21,7 @@ while ($row_patients = $result_patients->fetch_assoc()) {
 
 $output = array(
     'female_count' => $row_female['female_count'],
+    'male_count' => $row_male['male_count'],
     'patient_counts' => $patient_counts
   );
   echo json_encode($output);
